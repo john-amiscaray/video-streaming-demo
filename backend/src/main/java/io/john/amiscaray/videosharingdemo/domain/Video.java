@@ -9,7 +9,6 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 public class Video{
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
