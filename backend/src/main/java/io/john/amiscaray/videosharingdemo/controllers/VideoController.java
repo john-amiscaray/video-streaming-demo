@@ -4,6 +4,8 @@ import io.john.amiscaray.videosharingdemo.services.VideoService;
 import lombok.AllArgsConstructor;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -32,7 +34,9 @@ public class VideoController {
     public ResponseEntity<Resource> getVideoByName(@PathVariable("name") String name){
 
         return ResponseEntity
-                .ok(new ByteArrayResource(videoService.getVideo(name).getData()));
+                .status(HttpStatus.OK)
+                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                .body(new ByteArrayResource(videoService.getVideo(name).getData()));
 
     }
 
