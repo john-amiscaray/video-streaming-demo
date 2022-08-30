@@ -30,7 +30,7 @@ public class VideoController {
     }
 
     // {name} is a path variable in the url. It is extracted as the String parameter annotated with @PathVariable
-    @GetMapping("{name}")
+    @GetMapping(value = "{name}", produces = "video/mp4")
     public ResponseEntity<Resource> getVideoByName(@PathVariable("name") String name){
 
         return ResponseEntity
